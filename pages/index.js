@@ -69,39 +69,6 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
         setFilteredNodeList(newFilteredNodeList);
     }
 
-    //button unclicked
-    const button = {
-        width: '125px',
-        height: '125px',
-        backgroundColor: 'transparent',
-        color: 'black',
-        fontSize: '12px',
-        fontWeight: 'bold',
-        border: '1.5px solid #000000',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        boxShadow: '2px 2px 2px grey'
-    }
-
-    //button clicked
-    const buttonActive = {
-        width: '125px',
-        height: '125px',
-        backgroundColor: '#D3D3D3',
-        borderRadius: '5px',
-        fontSize: '12px',
-        fontWeight: 'bold',
-        color: 'black',
-        border: '1.5px solid #000000',
-        boxShadow: '2px 2px 2px black'
-    }
-
-    const country = {
-        position: 'relative',
-        bottom: '25px',
-        fontSize: '1em'
-    }
-
 
     //button element
     const FlagButton = ({ countryId, countryName }) => (
@@ -110,7 +77,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                 key={countryId}
                 name={countryId}
                 onClick={(event) => (handleFlagClick(event, countryId))}
-                style={filteredNodeCountryList.includes(countryId) ? buttonActive : button}
+                className={filteredNodeCountryList.includes(countryId) ? 'FlagButtonClicked' : 'FlagButton'}
             >
                 <Image
                     width='100%'
@@ -118,7 +85,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                     src={`/${countryId}.png`}
                     alt={countryName}
                 />
-                <h3 style={country}>{countryName}</h3>
+                <h3 className={'FlagButtonCountry'}>{countryName}</h3>
             </button>
         </>
     );
@@ -400,6 +367,56 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
         * {
           box-sizing: border-box;
+        }
+
+        .FlagButton {
+            width: 125px;
+            height: 125px;
+            background: transparent;
+            color: black;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1.5px solid #000000;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 2px grey;
+            transition: background 0.5s, box-shadow 0.5s, border 0.5s;
+            -webkit-transition: -webkit-transform 500ms;
+        }
+        
+        .FlagButtonClicked {
+            width: 125px;
+            height: 125px;
+            background: #e9b846;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            color: black;
+            border: 1.5px solid #000000;
+            cursor: pointer;
+            box-shadow: 2px 2px 2px black;
+            transition: background 0.5s, box-shadow 0.5s, border 0.5s;
+            -webkit-transition: -webkit-transform 500ms;
+
+        }
+        
+        .FlagButton:hover, .FlagButton:focus, .FlagButton:active  {
+            background: #e9b846;
+            box-shadow: none;
+            border: 3px solid #93b72f;
+        }
+        
+        .FlagButtonClicked:hover, .FlagButtonClicked:focus, .FlagButtonClicked:active {
+            background: #FFB200;
+            box-shadow: none;
+            border: 3px solid #709827;
+        }
+        
+        
+        .FlagButtonCountry  {
+            position: relative;
+            bottom: 25px;
+            font-size: 1em
         }
       `}</style>
     </div>
