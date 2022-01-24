@@ -90,6 +90,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
         </>
     );
 
+
     //page html
     return (
       <div className="container">
