@@ -1,3 +1,3 @@
 Cheetahcoin Node Selector project.
 
-Developed for Cheetahcoin Project
+Developed for Cheetahcoin Project.
